@@ -78,16 +78,18 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                     final response =
                         await dio.post('https://fcm.googleapis.com/fcm/send',
                             data: {
-                              "notification": {
+                              "to" : widget.token,
+                              "priority": "High",
+                              "android_channel_id": "High_importance_channel",
+                              "notification":{
                                 "title": widget.currentUser,
                                 "body": message.text,
-                                "android_channel_id": "High_importance_channel"
-                              },
-                              "to": widget.token
+                              }
+
                             },
                             options: Options(headers: {
                               HttpHeaders.authorizationHeader:
-                                  'key=AAAA4XP-8Sg:APA91bGCDweJN0qypulmmblCI9b0eJBsvyd-5YZdwYTIyCETQXGig5UYizgFFApcDnRrAmPuLUbg4vPVNh_EEIunFjRrNXVqrAlOe2zCwQ3t1FrZmPq0YnNo49Q7ywKpytNyAP9RZKiI'
+                                  'key=AAAAkixznTY:APA91bGBfOSQxEgu_n6U270JqzJZuBsacL2x2MsBK358s3vC4jhBwfZArkRNmS9SrBWj7e3yNQH67wLopRFNjWoRmzkUF8qh35Kpwzoxy3fqCPhMUVlp5_qZYbQtHiGtKKkRQrU1NST_'
                             }));
                     print(response.data);
                     print('token : ${widget.token}');

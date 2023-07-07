@@ -17,12 +17,12 @@ class LocalNotificationService {
         ),
       );
 
-      // await flutterLocalNotificationsPlugin.show(
-      //   id,
-      //   message.notification!.title,
-      //   message.notification!.body,
-      //   notificationDetails,
-      // );
+      await flutterLocalNotificationsPlugin.show(
+        id,
+        message.notification!.title,
+        message.notification!.body,
+        notificationDetails,
+      );
     } on Exception catch (e) {
       print(e);
     }
